@@ -14,8 +14,9 @@ export const AuthRoutes = () => {
         <Stack.Navigator
             screenOptions={{
                 headerShown: false,
-                navigationBarColor: `transparent`,
-                
+                contentStyle: {
+                    backgroundColor: `#003840`
+                }
             }}
         >
             <Stack.Screen name="login" component={LoginScreen} />
