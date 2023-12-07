@@ -1,4 +1,5 @@
 import { Endereco } from "./Endereco"
+import { Servico } from "./Servico"
 
 
 export type User = {
@@ -21,4 +22,9 @@ export interface Estabelecimento extends User {
     descricao: string,
     
     cnpj?: string,
+}
+
+export interface EstabelecimentoWithServices extends Estabelecimento {
+    servicos: Servico[]
+    endereco: Endereco
 }

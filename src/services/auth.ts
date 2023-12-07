@@ -8,12 +8,10 @@ import { User } from "../models/User";
 export class Auth implements AuthContract {
     constructor(
         private readonly apiInstance = Api.instance
-    ) {
-        this.apiInstance.defaults.baseURL += '/auth'
-    }
+    ) {}
     
     async login({email, senha} : AuthLoginRequest) {
-        const response = await this.apiInstance.post<AuthLoginResponse>('/login', {
+        const response = await this.apiInstance.post<AuthLoginResponse>('auth/login', {
             email,
             senha
         })
@@ -22,7 +20,7 @@ export class Auth implements AuthContract {
     }
 
     async me<T>(token: string) {
-        const response = await this.apiInstance.get<User>('/me', {
+        const response = await this.apiInstance.get<User>('auth/me', {
             headers: {
                 Authorization: `Bearer ${token}`
             }

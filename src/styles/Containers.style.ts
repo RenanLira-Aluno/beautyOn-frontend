@@ -4,7 +4,6 @@ import styled from "styled-components/native";
 
 export const PageContainer = styled.View`
     flex: 1;
-    padding-top: ${StatusBar.currentHeight}px;
     padding-left: ${scale(20)}px;
     padding-right: ${scale(20)}px;
 `
@@ -39,4 +38,9 @@ export const InputContainer = styled.View`
     gap: ${moderateScale(8)}px;
     width: 100%;
     border-radius: ${moderateScale(10)}px;
+`
+
+export const SecaoContainer = styled.View`
+    gap: ${moderateScale(12)}px;
+    margin-top: ${verticalScale(26)}px;
 `

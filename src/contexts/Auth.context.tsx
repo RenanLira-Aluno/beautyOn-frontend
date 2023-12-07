@@ -9,7 +9,10 @@ import { TokenDecode } from "../models/tokenDecode"
 
 interface AuthContextData {
     user: User | null,
+    logged: boolean,
+    token: string | null,
     login: (data: AuthLoginRequest) => Promise<void | string>
+    logout: () => Promise<void>
 }
 
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -40,8 +43,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     }, [setUser, setToken])
 
+    const logout = useCallback(async () => {
+        setUser(null)
+        setToken(null)
+    },[])
+
     return (
-        <AuthContext.Provider value={{ user, login }}>
+        <AuthContext.Provider value={{ user, logged: !!user, token, login, logout }}>
             {children}
         </AuthContext.Provider>
     )

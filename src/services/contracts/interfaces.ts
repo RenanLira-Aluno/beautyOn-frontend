@@ -9,3 +9,8 @@ export interface AuthLoginResponse {
     access_token: string
 }
 
+export interface EstabelecimentosProximosRequest {
+    lat: number
+    long: number
+}
+
