@@ -1,7 +1,7 @@
 import { isAxiosError } from "axios";
 import { Api } from "../config/Api";
 import { AuthContract } from "./contracts/auth.contract";
-import { AuthLoginRequest, AuthLoginResponse } from "./contracts/interfaces";
+import { AuthLoginRequest, AuthLoginResponse, AuthSignupRequest, AuthSignupResponse } from "./contracts/interfaces";
 import { User } from "../models/User";
 
 
@@ -27,6 +27,14 @@ export class Auth implements AuthContract {
         })
 
         return response.data as T
+    }
+
+    async signup({...body} : AuthSignupRequest) {
+        const response = await this.apiInstance.post<AuthSignupResponse>('auth/signup', {
+            ...body
+        })
+
+        return response.data
     }
 
 }

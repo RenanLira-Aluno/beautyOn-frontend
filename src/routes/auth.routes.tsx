@@ -5,6 +5,7 @@ import { LoginScreen } from "../screens/LoginScreen"
 
 export type AuthRoutesParams = {
     login: undefined
+    signUp: undefined
 }
 
 const Stack = createNativeStackNavigator<AuthRoutesParams>()
@@ -20,6 +21,7 @@ export const AuthRoutes = () => {
             }}
         >
             <Stack.Screen name="login" component={LoginScreen} />
+            <Stack.Screen name="signUp" component={HomeScreen} />
         </Stack.Navigator>
     )
 }
