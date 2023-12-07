@@ -1,4 +1,5 @@
 import { Endereco } from "./Endereco"
+import { HorarioFuncionamento } from "./HorarioFuncionamento"
 import { Servico } from "./Servico"
 
 
@@ -17,14 +18,26 @@ export interface Cliente extends User {
     long?: number,
 }
 
+export interface Profissional extends User {
+
+    descricao: string,
+    primeiroNome: string,
+    segundoNome: string,
+}
+
 export interface Estabelecimento extends User {
     nomeEmpresa: string,
     descricao: string,
-    
+
     cnpj?: string,
 }
 
 export interface EstabelecimentoWithServices extends Estabelecimento {
     servicos: Servico[]
     endereco: Endereco
+}
+
+export interface EstabelecimentoComplete extends EstabelecimentoWithServices {
+    horariosFuncionamento: HorarioFuncionamento[]
+    profissionais: Profissional[]
 }

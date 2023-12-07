@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { HomeScreen } from "../screens/HomeScreen"
 import { LoginScreen } from "../screens/LoginScreen"
+import { SignUpScreen } from "../screens/SignUpScreen"
 
 
 export type AuthRoutesParams = {
@@ -21,7 +21,7 @@ export const AuthRoutes = () => {
             }}
         >
             <Stack.Screen name="login" component={LoginScreen} />
-            <Stack.Screen name="signUp" component={HomeScreen} />
+            <Stack.Screen name="signUp" component={SignUpScreen} />
         </Stack.Navigator>
     )
 }

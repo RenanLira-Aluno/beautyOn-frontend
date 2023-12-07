@@ -9,9 +9,9 @@ interface SectionScrollProps {
 export const SectionScroll = ({...props} : SectionScrollProps) => {
 
     return (
-        <FlatList 
+        <FlatList
             data={props.data}
-            renderItem={({item}) => <ItemCard nome={item.nomeEmpresa} fotoPerfil={item.fotoPerfil} />}
+            renderItem={({item}) => <ItemCard id={item.id} nome={item.nomeEmpresa} fotoPerfil={item.fotoPerfil} />}
             horizontal
             contentContainerStyle={{gap: 16}}
             showsHorizontalScrollIndicator={false}

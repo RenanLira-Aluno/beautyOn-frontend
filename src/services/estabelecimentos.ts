@@ -1,6 +1,7 @@
 import { Api } from "../config/Api";
+import { EstabelecimentoComplete, EstabelecimentoWithServices } from "../models/User";
 import { EstabelecimentoContract } from "./contracts/estabelecimentos.contract";
-import { EstabelecimentosProximosRequest } from "./contracts/interfaces";
+import { EstabelecimentosAllRequest, EstabelecimentosProximosRequest } from "./contracts/interfaces";
 
 export class Estabelecimentos implements EstabelecimentoContract {
     constructor(
@@ -12,6 +13,19 @@ export class Estabelecimentos implements EstabelecimentoContract {
 
             return config
         })
+    }
+
+    async findAll({porNome, tipoServico} : EstabelecimentosAllRequest): Promise<EstabelecimentoWithServices[]> {
+        const response = await this.apiInstance.get<EstabelecimentoWithServices[]>(
+            `/estabelecimentos?tipoServico=${tipoServico?.join(',')}`)
+
+        return response.data
+    }
+
+    async findOne(id: string): Promise<EstabelecimentoComplete> {
+        const response = await this.apiInstance.get<EstabelecimentoComplete>(`/estabelecimentos/${id}`)
+
+        return response.data
     }
 
     async proximos({lat, long} : EstabelecimentosProximosRequest) {

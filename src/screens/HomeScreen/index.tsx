@@ -19,15 +19,19 @@ export const HomeScreen = () => {
     const {token} = useContext(AuthContext)
 
     const [estabelecimentos, setEstabelecimentos] = useState<EstabelecimentoWithServices[]>([])
+    const [cabelos, setCabelos] = useState<EstabelecimentoWithServices[]>([])
 
     useEffect(() => {
-        let estabelecimentos: EstabelecimentoWithServices[] = []
         Geolocation.getCurrentPosition(async (info) => {
             setEstabelecimentos(await new Estabelecimentos(token!).proximos({lat: info.coords.latitude, long: info.coords.longitude}))
         })
-
-
     }, [])
+
+    useEffect(() => {
+        (async () => {
+            setCabelos(await new Estabelecimentos(token!).findAll({tipoServico: ['0001']}))
+        })()
+    }, [setCabelos])
 
 
 
@@ -37,6 +41,10 @@ export const HomeScreen = () => {
                 <SecaoContainer>
                     <Titulo>Locais Proximos de você</Titulo>
                     <SectionScroll data={estabelecimentos}  />
+                </SecaoContainer>
+                <SecaoContainer>
+                    <Titulo>Salões de Cabelo</Titulo>
+                    <SectionScroll data={cabelos} />
                 </SecaoContainer>
             </PageContainer>
         </ScrollView>

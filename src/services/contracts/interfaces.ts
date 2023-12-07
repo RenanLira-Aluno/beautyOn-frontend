@@ -26,3 +26,7 @@ export interface EstabelecimentosProximosRequest {
     long: number
 }
 
+export interface EstabelecimentosAllRequest {
+    porNome?: string
+    tipoServico?: string[]
+}
